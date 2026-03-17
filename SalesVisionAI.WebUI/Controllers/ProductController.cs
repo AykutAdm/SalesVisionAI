@@ -17,8 +17,6 @@ namespace SalesVisionAI.WebUI.Controllers
 
         public IActionResult ProductList(int page = 1)
         {
-            //var values = _context.Products.ToList();
-            //return View(values);
 
             int pageSize = 12; // her sayfada 12 kayıt
             var values = _context.Products

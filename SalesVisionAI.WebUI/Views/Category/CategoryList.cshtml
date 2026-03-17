@@ -1,38 +1,73 @@
-﻿@model List<Category>
+@model List<Category>
 @{
     ViewData["Title"] = "CategoryList";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
 <section class="content">
-
+    <div class="block-header">
+        <div class="row align-items-center">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>
+                    <i class="zmdi zmdi-view-list"></i> Kategori Listesi
+                    <small class="text-muted d-block mt-2">Kategori İşlemleri Sayfası</small>
+                </h2>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-12">
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard/Index"><i class="zmdi zmdi-home"></i> Ana Sayfa</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Kategoriler</a></li>
+                    <li class="breadcrumb-item active">Kategori Listesi</li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row clearfix">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="body">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <h5 class="mb-0"><i class="zmdi zmdi-folder"></i> Toplam Kategori: <span class="badge badge-primary">@Model.Count</span></h5>
+                            </div>
+                            <div>
+                                <a href="/Category/CreateCategory/" class="btn btn-primary">
+                                    <i class="zmdi zmdi-plus"></i> Yeni Kategori Ekle
+                                </a>
+                            </div>
+                        </div>
 
-                        <table class="table table-boredered">
-                            <tr>
-                                <th>#</th>
-                                <th>Kategori Adı</th>
-                                <th>Sil</th>
-                                <th>Güncelle</th>
-                            </tr>
-
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@item.CategoryId</td>
-                                    <td>@item.CategoryName</td>
-                                    <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-success">Güncelle</a></td>
-                                </tr>
-                            }
-
-                        </table>
-
-                        <a href="/Category/CreateCategory/" class="btn btn-primary">Yeni Kategori Girişi</a>
+                        <div class="table-container">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th><i class="zmdi zmdi-key"></i> ID</th>
+                                        <th><i class="zmdi zmdi-label"></i> Kategori Adı</th>
+                                        <th><i class="zmdi zmdi-settings"></i> İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th>#@item.CategoryId</th>
+                                            <td><strong>@item.CategoryName</strong></td>
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    <a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-success btn-sm" title="Güncelle">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </a>
+                                                    <a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger btn-sm" title="Sil" onclick="return confirm('Bu kategoriyi silmek istediğinize emin misiniz?')">
+                                                        <i class="zmdi zmdi-delete"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                 </div>

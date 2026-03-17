@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using SalesVisionAI.WebUI.Context;
 
 namespace SalesVisionAI.WebUI.ViewComponents.DashboardViewComponents
@@ -15,7 +15,8 @@ namespace SalesVisionAI.WebUI.ViewComponents.DashboardViewComponents
         public IViewComponentResult Invoke()
         {
             #region Main_Statistics
-            var today = new DateTime(2025, 10, 15);
+            // Veriler birkaç ay öncesine ait olduğu için son sipariş tarihine yakın bir tarih kullanıyoruz
+            var today = new DateTime(2024, 6, 15);
 
             var todaySalesCompleted = _context.Orders
                 .Where(o => o.OrderDate >= today && o.OrderDate < today.AddDays(1) && o.OrderStatus == "Tamamlandı")
@@ -23,7 +24,7 @@ namespace SalesVisionAI.WebUI.ViewComponents.DashboardViewComponents
                       order => order.ProductId,
                       product => product.ProductId,
                       (order, product) => new { order.Quantity, product.UnitPrice })
-                .Sum(x => x.Quantity * x.UnitPrice);
+                .Sum(x => (decimal?)(x.Quantity * x.UnitPrice)) ?? 0;
 
             ViewBag.TodaySales = Math.Round(todaySalesCompleted, 2);
 
@@ -34,7 +35,7 @@ namespace SalesVisionAI.WebUI.ViewComponents.DashboardViewComponents
                    order => order.ProductId,
                    product => product.ProductId,
                    (order, product) => new { order.Quantity, product.UnitPrice })
-             .Sum(x => x.Quantity * x.UnitPrice);
+             .Sum(x => (decimal?)(x.Quantity * x.UnitPrice)) ?? 0;
 
             ViewBag.TodaySalesShipped = Math.Round(todaySalesShipped, 2);
 
@@ -45,14 +46,14 @@ namespace SalesVisionAI.WebUI.ViewComponents.DashboardViewComponents
                   order => order.ProductId,
                   product => product.ProductId,
                   (order, product) => new { order.Quantity, product.UnitPrice })
-            .Sum(x => x.Quantity * x.UnitPrice);
+            .Sum(x => (decimal?)(x.Quantity * x.UnitPrice)) ?? 0;
 
             ViewBag.TodaySalesPreparing = Math.Round(todaySalesPreparing, 2);
 
             #endregion
 
             #region Main_Chart
-            var sixMonthsAgo = DateTime.Today.AddMonths(-6);
+            var sixMonthsAgo = today.AddMonths(-6);
 
             var monthlySalesRaw = _context.Orders
                 .Where(o => o.OrderDate >= sixMonthsAgo)

@@ -1,0 +1,716 @@
+/* ========================================
+   Modern Dark Theme - SalesVisionAI
+   ======================================== */
+
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --secondary-color: #8b5cf6;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #3b82f6;
+    
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-card: #1e293b;
+    --bg-hover: #2d3b4f;
+    
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    
+    --border-color: #334155;
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ========================================
+   Global Dark Theme Overrides
+   ======================================== */
+
+body.theme-dark {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+.theme-dark .content {
+    background-color: var(--bg-primary) !important;
+}
+
+.theme-dark .card {
+    background: linear-gradient(145deg, #1e293b 0%, #1a2332 100%) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--border-radius) !important;
+    box-shadow: var(--shadow-lg) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.theme-dark .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl) !important;
+}
+
+.theme-dark .card .body {
+    background: transparent !important;
+    padding: 1.5rem !important;
+}
+
+/* ========================================
+   Modern Block Header
+   ======================================== */
+
+.theme-dark .block-header {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 2rem !important;
+    margin-bottom: 2rem !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.theme-dark .block-header h2 {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    font-size: 1.75rem !important;
+    margin-bottom: 0.5rem !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.theme-dark .block-header .text-muted,
+.theme-dark .block-header small {
+    color: var(--text-secondary) !important;
+    font-size: 0.95rem !important;
+}
+
+.theme-dark .breadcrumb {
+    background: rgba(51, 65, 85, 0.3) !important;
+    border-radius: var(--border-radius-sm) !important;
+    padding: 0.75rem 1rem !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.theme-dark .breadcrumb-item,
+.theme-dark .breadcrumb-item a {
+    color: var(--text-secondary) !important;
+    transition: color 0.2s ease !important;
+}
+
+.theme-dark .breadcrumb-item a:hover {
+    color: var(--primary-color) !important;
+    text-decoration: none !important;
+}
+
+.theme-dark .breadcrumb-item.active {
+    color: var(--primary-color) !important;
+    font-weight: 600 !important;
+}
+
+.theme-dark .breadcrumb-item + .breadcrumb-item::before {
+    color: var(--text-muted) !important;
+}
+
+/* ========================================
+   Modern Table Styles
+   ======================================== */
+
+.theme-dark .table-container {
+    overflow-x: auto;
+    border-radius: var(--border-radius) !important;
+}
+
+.theme-dark .table {
+    color: var(--text-primary) !important;
+    border-collapse: separate !important;
+    border-spacing: 0 0.5rem !important;
+    margin-bottom: 0 !important;
+}
+
+.theme-dark .table thead th {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.5px !important;
+    padding: 1rem 1.25rem !important;
+    border: none !important;
+    white-space: nowrap !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.theme-dark .table thead th:first-child {
+    border-top-left-radius: var(--border-radius-sm) !important;
+}
+
+.theme-dark .table thead th:last-child {
+    border-top-right-radius: var(--border-radius-sm) !important;
+}
+
+.theme-dark .table tbody tr {
+    background: linear-gradient(145deg, #1e293b 0%, #1a2332 100%) !important;
+    transition: all 0.3s ease !important;
+    border-radius: var(--border-radius-sm) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.theme-dark .table tbody tr:hover {
+    background: linear-gradient(145deg, #2d3b4f 0%, #242e3d 100%) !important;
+    transform: translateX(4px) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.theme-dark .table tbody td,
+.theme-dark .table tbody th {
+    color: var(--text-primary) !important;
+    padding: 1.25rem 1.25rem !important;
+    border: none !important;
+    vertical-align: middle !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+}
+
+.theme-dark .table tbody tr td:first-child,
+.theme-dark .table tbody tr th:first-child {
+    border-top-left-radius: var(--border-radius-sm) !important;
+    border-bottom-left-radius: var(--border-radius-sm) !important;
+}
+
+.theme-dark .table tbody tr td:last-child,
+.theme-dark .table tbody tr th:last-child {
+    border-top-right-radius: var(--border-radius-sm) !important;
+    border-bottom-right-radius: var(--border-radius-sm) !important;
+}
+
+.theme-dark .table-bordered,
+.theme-dark .table-bordered thead th,
+.theme-dark .table-bordered tbody td {
+    border: none !important;
+}
+
+/* ========================================
+   Modern Buttons
+   ======================================== */
+
+.theme-dark .btn {
+    border-radius: var(--border-radius-sm) !important;
+    font-weight: 600 !important;
+    padding: 0.625rem 1.25rem !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.theme-dark .btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.theme-dark .btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    color: #ffffff !important;
+}
+
+.theme-dark .btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-hover) 0%, #7c3aed 100%) !important;
+}
+
+.theme-dark .btn-success {
+    background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%) !important;
+    color: #ffffff !important;
+}
+
+.theme-dark .btn-success:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+}
+
+.theme-dark .btn-danger {
+    background: linear-gradient(135deg, var(--danger-color) 0%, #dc2626 100%) !important;
+    color: #ffffff !important;
+}
+
+.theme-dark .btn-danger:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+}
+
+.theme-dark .btn-warning {
+    background: linear-gradient(135deg, var(--warning-color) 0%, #d97706 100%) !important;
+    color: #ffffff !important;
+}
+
+.theme-dark .btn-warning:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
+}
+
+.theme-dark .btn-info {
+    background: linear-gradient(135deg, var(--info-color) 0%, #2563eb 100%) !important;
+    color: #ffffff !important;
+}
+
+.theme-dark .btn-info:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+}
+
+.theme-dark .btn-sm {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.8rem !important;
+}
+
+/* Button Gap Support */
+.d-flex.gap-2 {
+    gap: 0.5rem;
+}
+
+.d-flex.gap-3 {
+    gap: 1rem;
+}
+
+.d-flex.gap-4 {
+    gap: 1.5rem;
+}
+
+/* ========================================
+   Modern Pagination
+   ======================================== */
+
+.theme-dark .pagination {
+    gap: 0.5rem !important;
+}
+
+.theme-dark .page-item .page-link {
+    background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--border-radius-sm) !important;
+    padding: 0.625rem 1rem !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.theme-dark .page-item .page-link:hover {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.theme-dark .page-item.active .page-link {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.theme-dark .page-item.disabled .page-link {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-muted) !important;
+    opacity: 0.5 !important;
+}
+
+/* ========================================
+   Modern Modal
+   ======================================== */
+
+.theme-dark .modal-content {
+    background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-primary) 100%) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--border-radius) !important;
+    box-shadow: var(--shadow-xl) !important;
+}
+
+.theme-dark .modal-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+    padding: 1.5rem !important;
+}
+
+.theme-dark .modal-title {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.theme-dark .modal-body {
+    color: var(--text-primary) !important;
+    padding: 1.5rem !important;
+}
+
+.theme-dark .modal-footer {
+    border-top: 1px solid var(--border-color) !important;
+    padding: 1.5rem !important;
+}
+
+.theme-dark .close {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* ========================================
+   Dashboard Specific Styles
+   ======================================== */
+
+.theme-dark .dashboard-kpi-card {
+    background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-primary) 100%) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 1.5rem !important;
+    box-shadow: var(--shadow-lg) !important;
+    transition: all 0.3s ease !important;
+}
+
+.theme-dark .dashboard-kpi-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-xl) !important;
+}
+
+.theme-dark .dashboard-kpi-card h3 {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+}
+
+.theme-dark .dashboard-kpi-card p {
+    color: var(--text-secondary) !important;
+}
+
+/* ========================================
+   Search & Filter Section
+   ======================================== */
+
+.theme-dark .search-filter-section {
+    background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.theme-dark .form-control {
+    background: var(--bg-tertiary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--border-radius-sm) !important;
+    padding: 0.75rem 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.theme-dark .form-control:focus {
+    background: var(--bg-secondary) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25) !important;
+    color: var(--text-primary) !important;
+}
+
+.theme-dark .form-control::placeholder {
+    color: var(--text-muted) !important;
+}
+
+/* ========================================
+   Stats Cards
+   ======================================== */
+
+.theme-dark .stat-card {
+    background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 1.5rem !important;
+    box-shadow: var(--shadow-md) !important;
+    transition: all 0.3s ease !important;
+}
+
+.theme-dark .stat-card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.theme-dark .stat-card .stat-value {
+    color: var(--text-primary) !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+}
+
+.theme-dark .stat-card .stat-label {
+    color: var(--text-secondary) !important;
+    font-size: 0.9rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* ========================================
+   Badge & Labels
+   ======================================== */
+
+.theme-dark .badge {
+    border-radius: var(--border-radius-sm) !important;
+    padding: 0.5rem 1rem !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+}
+
+.theme-dark .badge-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+}
+
+.theme-dark .badge-success {
+    background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%) !important;
+}
+
+.theme-dark .badge-danger {
+    background: linear-gradient(135deg, var(--danger-color) 0%, #dc2626 100%) !important;
+}
+
+.theme-dark .badge-warning {
+    background: linear-gradient(135deg, var(--warning-color) 0%, #d97706 100%) !important;
+}
+
+/* ========================================
+   Scrollbar
+   ======================================== */
+
+.theme-dark ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.theme-dark ::-webkit-scrollbar-track {
+    background: var(--bg-primary) !important;
+}
+
+.theme-dark ::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary) !important;
+    border-radius: 5px !important;
+}
+
+.theme-dark ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color) !important;
+}
+
+/* ========================================
+   Additional Dark Mode Text Colors
+   ======================================== */
+
+.theme-dark h1, 
+.theme-dark h2, 
+.theme-dark h3, 
+.theme-dark h4, 
+.theme-dark h5, 
+.theme-dark h6 {
+    color: var(--text-primary) !important;
+}
+
+.theme-dark p,
+.theme-dark span,
+.theme-dark div {
+    color: var(--text-primary) !important;
+}
+
+.theme-dark .text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* ========================================
+   Loading Animation
+   ======================================== */
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.theme-dark .loading-shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right, var(--bg-secondary) 4%, var(--bg-tertiary) 25%, var(--bg-secondary) 36%);
+    background-size: 1000px 100%;
+}
+
+/* ========================================
+   Sidebar Dark Mode Fix
+   ======================================== */
+
+.theme-dark .sidebar {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+}
+
+.theme-dark .sidebar .user-info {
+    background: rgba(51, 65, 85, 0.5) !important;
+    border-bottom: 1px solid #334155 !important;
+}
+
+.theme-dark .sidebar .user-info .name,
+.theme-dark .sidebar .user-info .email {
+    color: #f1f5f9 !important;
+}
+
+.theme-dark .sidebar .menu .list li.header {
+    color: #cbd5e1 !important;
+    font-weight: 700 !important;
+}
+
+.theme-dark .sidebar .menu .list li a {
+    color: #cbd5e1 !important;
+    transition: all 0.3s ease !important;
+}
+
+.theme-dark .sidebar .menu .list li a:hover {
+    background: rgba(99, 102, 241, 0.2) !important;
+    color: #f1f5f9 !important;
+}
+
+.theme-dark .sidebar .menu .list li.active > a {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    color: #ffffff !important;
+}
+
+.theme-dark .sidebar .menu .list li a i {
+    color: #94a3b8 !important;
+}
+
+.theme-dark .sidebar .menu .list li a:hover i,
+.theme-dark .sidebar .menu .list li.active > a i {
+    color: #ffffff !important;
+}
+
+.theme-dark .sidebar .menu .list li a span {
+    color: #cbd5e1 !important;
+}
+
+.theme-dark .sidebar .menu .list li a:hover span,
+.theme-dark .sidebar .menu .list li.active > a span {
+    color: #ffffff !important;
+}
+
+/* ========================================
+   Dashboard Card Headers Fix
+   ======================================== */
+
+.theme-dark .card .header h2,
+.theme-dark .card-header h2 {
+    color: #f1f5f9 !important;
+    font-weight: 700 !important;
+}
+
+.theme-dark .card .header h2 small,
+.theme-dark .card-header h2 small {
+    color: #cbd5e1 !important;
+}
+
+.theme-dark .card .header,
+.theme-dark .card-header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+    border-bottom: 2px solid #334155 !important;
+    padding: 1rem 1.5rem !important;
+}
+
+.theme-dark .header-dropdown .dropdown-menu {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.theme-dark .header-dropdown .dropdown-menu li a {
+    color: var(--text-primary) !important;
+}
+
+.theme-dark .header-dropdown .dropdown-menu li a:hover {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+/* ========================================
+   Dashboard Country Statistics Fix
+   ======================================== */
+
+.theme-dark #chartCenterText {
+    color: #f1f5f9 !important;
+}
+
+.theme-dark #chartCenterText span {
+    color: #cbd5e1 !important;
+}
+
+/* ========================================
+   Dashboard Review Cards Fix
+   ======================================== */
+
+.theme-dark .inbox-widget .inbox-item-info .author {
+    color: #f1f5f9 !important;
+    font-weight: 600 !important;
+}
+
+.theme-dark .inbox-widget .inbox-item-info .inbox-message {
+    color: #cbd5e1 !important;
+}
+
+.theme-dark .inbox-widget .inbox-item-info .inbox-date {
+    color: #94a3b8 !important;
+}
+
+.theme-dark .inbox-widget .inbox-inner:hover {
+    background: rgba(99, 102, 241, 0.1) !important;
+    border-radius: 8px !important;
+}
+
+/* ========================================
+   Dashboard Activities / Stock Fix
+   ======================================== */
+
+.theme-dark .activities .sl-content .text-muted-dk {
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+}
+
+.theme-dark .activities .text-info {
+    color: #3b82f6 !important;
+}
+
+/* ========================================
+   Table Text Color Fix
+   ======================================== */
+
+.theme-dark .table th,
+.theme-dark .table td {
+    color: #f1f5f9 !important;
+}
+
+/* ========================================
+   Customer Detail Profile Page Fix
+   ======================================== */
+
+.theme-dark .profile-page .profile-header {
+    background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%) !important;
+    border: 1px solid #334155 !important;
+}
+
+.theme-dark .profile-page .profile_info h4 {
+    color: #f1f5f9 !important;
+    font-weight: 700 !important;
+}
+
+.theme-dark .profile-page .profile_info .job_post {
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+}
+
+.theme-dark .profile-page .profile_info p {
+    color: #cbd5e1 !important;
+    line-height: 1.6 !important;
+}
+
+.theme-dark .profile-page .card {
+    background: linear-gradient(145deg, #1e293b 0%, #1a2332 100%) !important;
+    border: 1px solid #334155 !important;
+}

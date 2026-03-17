@@ -1,50 +1,58 @@
-﻿<div class="col-lg-9 col-md-8">
+<div class="col-lg-9 col-md-8">
     <div class="card product-report">
-        <div class="header">
-            <h2>Sipariş Rapor Grafiği <small>Bugünkü Tamamlanan / İptal Edilen ve Kargodaki Sipariş Tutarları</small></h2>
+        <div class="header" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 1.5rem; border-radius: 12px 12px 0 0; border-bottom: 2px solid #334155;">
+            <h2 style="color: #f1f5f9; font-weight: 700;"><i class="zmdi zmdi-chart"></i> Sipariş Rapor Grafiği <small style="color: #cbd5e1; display: block; margin-top: 0.5rem;">Bugünkü Tamamlanan / İptal Edilen ve Kargodaki Sipariş Tutarları</small></h2>
         </div>
         <div class="body">
             <div class="row clearfix m-b-15">
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <div class="icon l-amber"><i class="zmdi zmdi-chart-donut"></i></div>
-                    <div class="col-in">
-                        <h4 class="counter m-b-0">@ViewBag.TodaySales €</h4>
-                        <small class="text-muted m-t-0">Tamamlanan Satışlar</small>
+                <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
+                    <div style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="d-flex align-items-center">
+                            <div class="icon" style="font-size: 3rem; color: #ffffff; margin-right: 1rem;"><i class="zmdi zmdi-chart-donut"></i></div>
+                            <div>
+                                <h4 class="m-b-0" style="color: #ffffff; font-weight: 700; font-size: 1.75rem;">@ViewBag.TodaySales €</h4>
+                                <small style="color: rgba(255,255,255,0.9); font-weight: 600;">Tamamlanan Satışlar</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <div class="icon l-turquoise"><i class="zmdi zmdi-chart"></i></div>
-                    <div class="col-in">
-                        <h4 class="counter m-b-0">@ViewBag.TodaySalesPreparing €</h4>
-                        <small class="text-muted m-t-0">Hazırlanan Sipariş Tutarı</small>
+                <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
+                    <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="d-flex align-items-center">
+                            <div class="icon" style="font-size: 3rem; color: #ffffff; margin-right: 1rem;"><i class="zmdi zmdi-chart"></i></div>
+                            <div>
+                                <h4 class="m-b-0" style="color: #ffffff; font-weight: 700; font-size: 1.75rem;">@ViewBag.TodaySalesPreparing €</h4>
+                                <small style="color: rgba(255,255,255,0.9); font-weight: 600;">Hazırlanan Sipariş</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <div class="icon l-parpl"><i class="zmdi zmdi-card"></i></div>
-                    <div class="col-in">
-                        <h4 class="counter m-b-0">@ViewBag.TodaySalesShipped €</h4>
-                        <small class="text-muted m-t-0">Kargodaki Sipariş Tutarı</small>
+                <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
+                    <div style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="d-flex align-items-center">
+                            <div class="icon" style="font-size: 3rem; color: #ffffff; margin-right: 1rem;"><i class="zmdi zmdi-card"></i></div>
+                            <div>
+                                <h4 class="m-b-0" style="color: #ffffff; font-weight: 700; font-size: 1.75rem;">@ViewBag.TodaySalesShipped €</h4>
+                                <small style="color: rgba(255,255,255,0.9); font-weight: 600;">Kargodaki Sipariş</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class="card">
+            <div class="card" style="background: linear-gradient(145deg, #1e293b 0%, #1a2332 100%); border: 1px solid #334155;">
                 <div class="body">
-                    <h4>Son 6 Aylık Satış Durumları</h4>
+                    <h4 style="color: #f1f5f9; font-weight: 700; margin-bottom: 1.5rem;"><i class="zmdi zmdi-trending-up"></i> Son 6 Aylık Satış Durumları</h4>
                     <canvas id="salesStatusChart"></canvas>
                 </div>
             </div>
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
-                // Backend'den gelen veriyi al
                 var salesData = @Html.Raw(ViewBag.MonthlySalesJson);
-
-                // Benzersiz ay listesi oluştur
                 const months = [...new Set(salesData.map(x => x.Ay))];
 
-                // Her durum için ay bazlı veriyi çıkar
                 const tamamlanan = months.map(m => {
                   const rec = salesData.find(x => x.Ay === m && x.Durum === "Tamamlandı");
                   return rec ? rec.SatisAdedi : 0;
@@ -71,30 +79,39 @@
                         label: 'Tamamlanan Satışlar',
                         data: tamamlanan,
                         fill: true,
-                        backgroundColor: 'rgba(76, 175, 80, 0.2)',
-                        borderColor: 'rgba(76, 175, 80, 1)',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#fff',
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                        borderColor: 'rgba(16, 185, 129, 1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#10b981',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
                         tension: 0.4
                       },
                       {
                         label: 'İptal Edilen Satışlar',
                         data: iptal,
                         fill: true,
-                        backgroundColor: 'rgba(244, 67, 54, 0.2)',
-                        borderColor: 'rgba(244, 67, 54, 1)',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#fff',
+                        backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#ef4444',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
                         tension: 0.4
                       },
                       {
                         label: 'Kargodaki Satışlar',
                         data: kargoda,
                         fill: true,
-                        backgroundColor: 'rgba(255, 193, 7, 0.2)',
-                        borderColor: 'rgba(255, 193, 7, 1)',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#fff',
+                        backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                        borderColor: 'rgba(245, 158, 11, 1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#f59e0b',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
                         tension: 0.4
                       }
                     ]
@@ -104,9 +121,23 @@
                     plugins: {
                       legend: {
                         position: 'top',
-                        labels: { color: '#333', usePointStyle: true }
+                        labels: { 
+                          color: '#f1f5f9', 
+                          usePointStyle: true,
+                          font: {
+                            size: 14,
+                            weight: '600'
+                          },
+                          padding: 15
+                        }
                       },
                       tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleColor: '#f1f5f9',
+                        bodyColor: '#cbd5e1',
+                        borderColor: '#334155',
+                        borderWidth: 1,
+                        padding: 12,
                         callbacks: {
                           label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()} adet`
                         }
@@ -115,11 +146,26 @@
                     scales: {
                       y: {
                         beginAtZero: true,
-                        ticks: { color: '#666' },
-                        grid: { color: '#eee' }
+                        ticks: { 
+                          color: '#cbd5e1',
+                          font: {
+                            size: 12,
+                            weight: '600'
+                          }
+                        },
+                        grid: { 
+                          color: '#334155',
+                          lineWidth: 1
+                        }
                       },
                       x: {
-                        ticks: { color: '#666' },
+                        ticks: { 
+                          color: '#cbd5e1',
+                          font: {
+                            size: 12,
+                            weight: '600'
+                          }
+                        },
                         grid: { display: false }
                       }
                     }

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SalesVisionAI.WebUI.Context;
 using SalesVisionAI.WebUI.Models;
@@ -16,7 +16,8 @@ namespace SalesVisionAI.WebUI.ViewComponents.DashboardViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var today = DateTime.Today;
+            // Veriler birkaç ay öncesine ait olduğu için son sipariş tarihine yakın bir tarih kullanıyoruz
+            var today = new DateTime(2024, 6, 15);
             var tomorrow = today.AddDays(1);
 
             var last10Orders = _context.Orders

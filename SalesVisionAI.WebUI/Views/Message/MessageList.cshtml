@@ -1,23 +1,24 @@
-@model List<Review>
+@model List<Message>
 @{
-    ViewData["Title"] = "ReviewList";
+    ViewData["Title"] = "MessageList";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
+
 
 <section class="content">
     <div class="block-header">
         <div class="row align-items-center">
             <div class="col-lg-7 col-md-6 col-sm-12">
                 <h2>
-                    <i class="zmdi zmdi-star"></i> Yorum ve Değerlendirme Listesi
-                    <small class="text-muted d-block mt-2">Kullanıcı Yorum Listesi İşlemleri Sayfası</small>
+                    <i class="zmdi zmdi-email"></i> Mesaj Listesi
+                    <small class="text-muted d-block mt-2">Müşteri Mesajları İşlemleri Sayfası</small>
                 </h2>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-12">
                 <ul class="breadcrumb float-md-right">
                     <li class="breadcrumb-item"><a href="/Dashboard/Index"><i class="zmdi zmdi-home"></i> Ana Sayfa</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Değerlendirmeler</a></li>
-                    <li class="breadcrumb-item active">Yorum Listesi</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Mesajlar</a></li>
+                    <li class="breadcrumb-item active">Mesaj Listesi</li>
                 </ul>
             </div>
         </div>
@@ -29,11 +30,11 @@
                     <div class="body">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <div>
-                                <h5 class="mb-0"><i class="zmdi zmdi-comments"></i> Toplam Yorum: <span class="badge badge-primary">@Model.Count</span></h5>
+                                <h5 class="mb-0"><i class="zmdi zmdi-email-open"></i> Toplam Mesaj: <span class="badge badge-primary">@Model.Count</span></h5>
                             </div>
                             <div>
-                                <a href="/Review/CreateReview/" class="btn btn-primary">
-                                    <i class="zmdi zmdi-plus"></i> Yeni Değerlendirme Ekle
+                                <a href="/Message/CreateMessage/" class="btn btn-primary">
+                                    <i class="zmdi zmdi-plus"></i> Yeni Örnek Mesaj Ekle
                                 </a>
                             </div>
                         </div>
@@ -43,10 +44,10 @@
                                 <thead>
                                     <tr>
                                         <th><i class="zmdi zmdi-key"></i> ID</th>
-                                        <th><i class="zmdi zmdi-account"></i> Müşteri</th>
-                                        <th><i class="zmdi zmdi-collection-item"></i> Ürün</th>
-                                        <th><i class="zmdi zmdi-star"></i> Puan</th>
-                                        <th><i class="zmdi zmdi-mood"></i> Analiz</th>
+                                        <th><i class="zmdi zmdi-account"></i> Gönderici</th>
+                                        <th><i class="zmdi zmdi-label"></i> Konu</th>
+                                        <th><i class="zmdi zmdi-mood"></i> Duygu Analizi</th>
+                                        <th><i class="zmdi zmdi-calendar"></i> Tarih</th>
                                         <th><i class="zmdi zmdi-settings"></i> İşlemler</th>
                                     </tr>
                                 </thead>
@@ -54,25 +55,20 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <th>#@item.ReviewId</th>
+                                            <th>#@item.MessageId</th>
                                             <td>@item.Customer.CustomerName @item.Customer.CustomerSurname</td>
-                                            <td><strong>@item.Product.ProductName</strong></td>
-                                            <td>
-                                                @for (int i = 0; i < item.Rating; i++)
-                                                {
-                                                    <i class="zmdi zmdi-star text-warning"></i>
-                                                }
-                                            </td>
-                                            <td><span class="badge badge-info">@item.Sentiment</span></td>
+                                            <td><strong>@item.MessageSubject</strong></td>
+                                            <td><span class="badge badge-info">@item.SentimentLabel</span></td>
+                                            <td>@item.CreatedDate.ToString("dd-MMM-yyyy")</td>
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    <a href="/Review/DeleteReview/@item.ReviewId" class="btn btn-warning btn-sm" title="Yorumu Gör">
+                                                    <button class="btn btn-warning btn-sm openMessageBtn" data-id="@item.MessageId" title="Mesajı Aç">
                                                         <i class="zmdi zmdi-eye"></i>
-                                                    </a>
-                                                    <a href="/Review/UpdateReview/@item.ReviewId" class="btn btn-success btn-sm" title="Güncelle">
+                                                    </button>
+                                                    <a href="/Message/UpdateMessage/@item.MessageId" class="btn btn-success btn-sm" title="Güncelle">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </a>
-                                                    <a href="/Review/DeleteReview/@item.ReviewId" class="btn btn-danger btn-sm" title="Sil" onclick="return confirm('Bu yorumu silmek istediğinize emin misiniz?')">
+                                                    <a href="/Message/DeleteMessage/@item.MessageId" class="btn btn-danger btn-sm" title="Sil" onclick="return confirm('Bu mesajı silmek istediğinize emin misiniz?')">
                                                         <i class="zmdi zmdi-delete"></i>
                                                     </a>
                                                 </div>
@@ -90,7 +86,7 @@
                                     @if (ViewBag.CurrentPage > 1)
                                     {
                                         <li class="page-item">
-                                            <a class="page-link" href="/Review/ReviewList?page=@(ViewBag.CurrentPage - 1)">Önceki</a>
+                                            <a class="page-link" href="/Message/MessageList?page=@(ViewBag.CurrentPage - 1)">Önceki</a>
                                         </li>
                                     }
 
@@ -101,7 +97,7 @@
                                         if (startPage > 1)
                                         {
                                             <li class="page-item">
-                                                <a class="page-link" href="/Review/ReviewList?page=1">1</a>
+                                                <a class="page-link" href="/Message/MessageList?page=1">1</a>
                                             </li>
                                             if (startPage > 2)
                                             {
@@ -114,7 +110,7 @@
                                         for (int i = startPage; i <= endPage; i++)
                                         {
                                             <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                                                <a class="page-link" href="/Review/ReviewList?page=@i">@i</a>
+                                                <a class="page-link" href="/Message/MessageList?page=@i">@i</a>
                                             </li>
                                         }
 
@@ -127,7 +123,7 @@
                                                 </li>
                                             }
                                             <li class="page-item">
-                                                <a class="page-link" href="/Review/ReviewList?page=@ViewBag.TotalPages">@ViewBag.TotalPages</a>
+                                                <a class="page-link" href="/Message/MessageList?page=@ViewBag.TotalPages">@ViewBag.TotalPages</a>
                                             </li>
                                         }
                                     }
@@ -135,7 +131,7 @@
                                     @if (ViewBag.CurrentPage < ViewBag.TotalPages)
                                     {
                                         <li class="page-item">
-                                            <a class="page-link" href="/Review/ReviewList?page=@(ViewBag.CurrentPage + 1)">Sonraki</a>
+                                            <a class="page-link" href="/Message/MessageList?page=@(ViewBag.CurrentPage + 1)">Sonraki</a>
                                         </li>
                                     }
 
@@ -145,7 +141,36 @@
 
 
                         <div class="text-center mt-4">
-                            <a href="/Review/CreateReview/" class="btn btn-primary">Yeni Değerlendirme Girişi</a>
+                            <a href="/Message/CreateMessage/" class="btn btn-primary">Yeni Örnek Mesaj Girişi</a>
+                        </div>
+
+
+                        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-primary text-white">
+                                        <h5 class="modal-title">
+                                            <i class="zmdi zmdi-email-open"></i> Mesaj Detayı
+                                        </h5>
+                                        <button type="button" class="close text-white" data-dismiss="modal">
+                                            <span>&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h5 id="msgSubject" class="font-weight-bold"></h5>
+                                        <p class="text-muted mb-2">
+                                            <i class="zmdi zmdi-account"></i> <span id="msgSender"></span> |
+                                            <i class="zmdi zmdi-time"></i> <span id="msgDate"></span> |
+                                            <i class="zmdi zmdi-info-outline"></i> <span id="msgSentiment"></span>
+                                        </p>
+                                        <hr>
+                                        <p id="msgContent" style="font-size: 15px;"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -154,3 +179,27 @@
         </div>
     </div>
 </section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).on("click", ".openMessageBtn", function () {
+        var id = $(this).data("id");
+
+        $.ajax({
+            url: "/Message/GetMessageDetail",
+            data: { id: id },
+            success: function (res) {
+                if (!res.success) return;
+
+                $("#msgSubject").text(res.subject);
+                $("#msgSender").text(res.sender);
+                $("#msgContent").text(res.content);
+                $("#msgDate").text(res.date);
+                $("#msgSentiment").text(res.sentiment);
+
+                $("#messageModal").modal("show");
+            }
+        });
+    });
+</script>

@@ -1,4 +1,4 @@
-﻿@model List<CountryOrderDto>
+@model List<CountryOrderDto>
 
 
     <div class="col-lg-4 col-md-6 col-sm-12">
@@ -12,7 +12,7 @@
                 <canvas id="countryOrdersChart" style="max-height: 220px;"></canvas>
                 <div id="chartCenterText"
                      style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
-                font-size:22px; font-weight:700; color:#222;"></div>
+                font-size:22px; font-weight:700; color:#f1f5f9;"></div>
             </div>
 
             <table class="table mt-2 mb-3">
@@ -75,14 +75,14 @@
                     onHover: function (event, activeElements) {
                         if (activeElements.length > 0) {
                             const i = activeElements[0].index;
-                            centerText.innerHTML = `${labels[i]}<br><span style="font-size:16px; color:#777;">${percentages[i]}%</span>`;
+                            centerText.innerHTML = `${labels[i]}<br><span style="font-size:16px; color:#cbd5e1;">${percentages[i]}%</span>`;
                         }
                     },
                     // 👇 Hover dışına çıkınca geri dönmesi için
                     onLeave: function () {
                         const maxValue = Math.max(...values);
                         const maxIndex = values.indexOf(maxValue);
-                        centerText.innerHTML = `${labels[maxIndex]}<br><span style="font-size:16px; color:#777;">${percentages[maxIndex]}%</span>`;
+                        centerText.innerHTML = `${labels[maxIndex]}<br><span style="font-size:16px; color:#cbd5e1;">${percentages[maxIndex]}%</span>`;
                     }
                 }
             });
@@ -90,7 +90,7 @@
             // Varsayılan merkez metni (en yüksek ülke)
             const maxValue = Math.max(...values);
             const maxIndex = values.indexOf(maxValue);
-            centerText.innerHTML = `${labels[maxIndex]}<br><span style="font-size:16px; color:#777;">${percentages[maxIndex]}%</span>`;
+            centerText.innerHTML = `${labels[maxIndex]}<br><span style="font-size:16px; color:#cbd5e1;">${percentages[maxIndex]}%</span>`;
         });
         </script>
 

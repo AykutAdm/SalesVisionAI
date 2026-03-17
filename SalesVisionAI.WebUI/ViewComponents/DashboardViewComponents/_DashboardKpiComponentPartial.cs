@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using SalesVisionAI.WebUI.Context;
 
 namespace SalesVisionAI.WebUI.ViewComponents.DashboardViewComponents
@@ -15,7 +15,8 @@ namespace SalesVisionAI.WebUI.ViewComponents.DashboardViewComponents
         public IViewComponentResult Invoke()
         {
             #region Kpi_1
-            var today = new DateTime(2025, 10, 15);
+            // Veriler birkaç ay öncesine ait olduğu için son sipariş tarihine yakın bir tarih kullanıyoruz
+            var today = new DateTime(2024, 6, 15);
             var yesterday = today.AddDays(-1);
 
             var todayOrderCount = _context.Orders.Where(x => x.OrderDate == today).Count();

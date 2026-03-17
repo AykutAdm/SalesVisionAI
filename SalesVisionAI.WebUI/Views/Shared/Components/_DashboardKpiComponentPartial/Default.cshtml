@@ -1,41 +1,56 @@
-﻿<div class="col-lg-3 col-md-4">
+<div class="col-lg-3 col-md-4">
     <div class="row clearfix">
 
-        <div class="col-lg-12 col-md-6 col-sm-12">
-            <div class="card top-report">
+        <div class="col-lg-12 col-md-6 col-sm-12 mb-4">
+            <div class="card top-report dashboard-kpi-card">
                 <div class="body">
-                    <h3 class="m-t-0">@ViewBag.TodayOrderCount <i class="@ViewBag.TrendingIcon"></i></h3>
-                    <p class="text-muted">Bugünkü Sipariş Sayısı</p>
-                    <div class="progress">
-                        <div class="progress-bar l-turquoise" role="progressbar" aria-valuenow="@ViewBag.TodayVsAverageRatio" aria-valuemin="0" aria-valuemax="100" style="width:@(ViewBag.TodayVsAverageRatio.ToString().Replace(',', '.'))%;">></div>
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <h3 class="m-0 text-primary" style="font-size: 2rem; font-weight: 700;">@ViewBag.TodayOrderCount</h3>
+                            <p class="text-muted mb-0 mt-2" style="font-size: 0.95rem;">Bugünkü Sipariş Sayısı</p>
+                        </div>
+                        <i class="@ViewBag.TrendingIcon" style="font-size: 2rem; color: #6366f1;"></i>
                     </div>
-                    <small style="color:@ViewBag.ChangeRateColor">Değişim: % @ViewBag.DailyOrderChange</small>
+                    <div class="progress" style="height: 8px; border-radius: 10px; background: #334155;">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="@ViewBag.TodayVsAverageRatio" aria-valuemin="0" aria-valuemax="100" style="width:@(ViewBag.TodayVsAverageRatio.ToString().Replace(',', '.'))%; background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); border-radius: 10px;"></div>
+                    </div>
+                    <small class="mt-2 d-block" style="color:@ViewBag.ChangeRateColor; font-weight: 600;"><i class="zmdi zmdi-trending-up"></i> Değişim: % @ViewBag.DailyOrderChange</small>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-12 col-md-6 col-sm-12">
-            <div class="card top-report">
+        <div class="col-lg-12 col-md-6 col-sm-12 mb-4">
+            <div class="card top-report dashboard-kpi-card">
                 <div class="body">
-                    <h3 class="m-t-0">@ViewBag.CancelledOrders7Days <i class="zmdi zmdi-trending-up float-right"></i></h3>
-                    <p class="text-muted">İptal Edilen Siparişler</p>
-                    <div class="progress">
-                        <div class="progress-bar l-blush" role="progressbar" aria-valuenow="@ViewBag.CancelRate" aria-valuemin="0" aria-valuemax="100" style="width: @(ViewBag.CancelRate.ToString().Replace(',', '.'))%;"></div>
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <h3 class="m-0 text-danger" style="font-size: 2rem; font-weight: 700;">@ViewBag.CancelledOrders7Days</h3>
+                            <p class="text-muted mb-0 mt-2" style="font-size: 0.95rem;">İptal Edilen Siparişler</p>
+                        </div>
+                        <i class="zmdi zmdi-close-circle" style="font-size: 2rem; color: #ef4444;"></i>
                     </div>
-                    <small>Durum: @ViewBag.CancelText</small>
+                    <div class="progress" style="height: 8px; border-radius: 10px; background: #334155;">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="@ViewBag.CancelRate" aria-valuemin="0" aria-valuemax="100" style="width: @(ViewBag.CancelRate.ToString().Replace(',', '.'))%; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: 10px;"></div>
+                    </div>
+                    <small class="mt-2 d-block" style="font-weight: 600; color: #cbd5e1;">Durum: @ViewBag.CancelText</small>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-12">
-            <div class="card top-report">
+        <div class="col-lg-12 mb-4">
+            <div class="card top-report dashboard-kpi-card">
                 <div class="body">
-                    <h3 class="m-t-0">@ViewBag.CompletedOrders <i class="zmdi zmdi-trending-down float-right"></i></h3>
-                    <p class="text-muted">Tamamlanan Siparişler</p>
-                    <div class="progress">
-                        <div class="progress-bar l-parpl" role="progressbar" aria-valuenow="@ViewBag.CompletionRate" aria-valuemin="0" aria-valuemax="100" style="width: @(ViewBag.CompletionRate.ToString().Replace(',', '.'))%;"></div>
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <h3 class="m-0 text-success" style="font-size: 2rem; font-weight: 700;">@ViewBag.CompletedOrders</h3>
+                            <p class="text-muted mb-0 mt-2" style="font-size: 0.95rem;">Tamamlanan Siparişler</p>
+                        </div>
+                        <i class="zmdi zmdi-check-circle" style="font-size: 2rem; color: #10b981;"></i>
                     </div>
-                    <small>Durum: @ViewBag.CompletionText</small>
+                    <div class="progress" style="height: 8px; border-radius: 10px; background: #334155;">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="@ViewBag.CompletionRate" aria-valuemin="0" aria-valuemax="100" style="width: @(ViewBag.CompletionRate.ToString().Replace(',', '.'))%; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 10px;"></div>
+                    </div>
+                    <small class="mt-2 d-block" style="font-weight: 600; color: #cbd5e1;">Durum: @ViewBag.CompletionText</small>
                 </div>
             </div>
         </div>

@@ -1,0 +1,31 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using SalesVisionAI.WebUI.Context;
+
+namespace SalesVisionAI.WebUI.ViewComponents.CustomerDetailViewComponents
+{
+    public class _CustomerDetailStatisticsComponentPartial : ViewComponent
+    {
+        private readonly SalesVisionAIDbContext _context;
+
+        public _CustomerDetailStatisticsComponentPartial(SalesVisionAIDbContext context)
+        {
+            _context = context;
+        }
+
+        public IViewComponentResult Invoke(int id)
+        {
+            id = 8;
+            ViewBag.TotalOrderCount = _context.Orders.Where(x => x.CustomerId == id).Count();
+
+            ViewBag.CompletedOrderCount = _context.Orders.Where(x => x.CustomerId == id && x.OrderStatus == "Tamamlandı").Count();
+
+            ViewBag.CanceledOrderCount = _context.Orders.Where(x => x.CustomerId == id && x.OrderStatus == "İptal Edildi").Count();
+
+            ViewBag.GetCustomerCountry = _context.Customers.Where(x => x.CustomerId == id).Select(y => y.CustomerCountry).FirstOrDefault();
+
+            ViewBag.GetCustomerCity = _context.Customers.Where(x => x.CustomerId == id).Select(y => y.CustomerCity).FirstOrDefault();
+
+            return View();
+        }
+    }
+}
