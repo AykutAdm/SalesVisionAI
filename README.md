@@ -28,6 +28,7 @@ Bu proje, gerçek dünya verisiyle büyük veri analizi, yapay zeka entegrasyonl
 - Entity Framework Core
 - SQL Server (2+ milyon satır veri analizi)
 - ML.NET (Makine Öğrenmesi)
+- OpenAI (GPT‑4)
 
 ### 🎨 Frontend (Web UI)
 - HTML5
