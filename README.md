@@ -1,10 +1,5 @@
 ## 📈 SalesVisionAI
 
-> 🎓 Bu proje, **Murat Yücedağ** hocamızın hazırladığı  
-> **"Büyük Veri Analitiği & Veri Görselleştirme ve Tahminleme"** eğitim serisi kapsamında geliştirilmiştir.
-
-[📺 Eğitim serisine buradan ulaşabilirsiniz](https://www.udemy.com/course/buyuk-veri-analitigi-veri-gorsellestirme-ve-tahminleme/)
-
 ---
 
 ## 📋 Proje Hakkında
